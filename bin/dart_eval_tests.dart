@@ -5,8 +5,8 @@ void main(List<String> arguments) async {
   final compiler = Compiler();
   compiler.addPlugin(ExpectPlugin());
 
-  final program = compiler.compile({
-    'my_package': {
+  final runtime = compiler.compileWriteAndLoad({
+    'example': {
       'main.dart': '''
 import "package:expect/expect.dart";
 
@@ -45,7 +45,7 @@ class BoolTest {
     Expect.isTrue(!identical(false, (true == true)));
     Expect.isTrue(!identical(true, (true == false)));
     Expect.isTrue(!identical(false, (false == false)));
-    // Expect.isTrue(!identical(true, (false == true)));
+    Expect.isTrue(!identical(true, (false == true)));
   }
 
   static void testMain() {
@@ -58,10 +58,7 @@ void main() {
 }
   ''',
     },
-  });
+  })..addPlugin(ExpectPlugin());
 
-  final runtime = Runtime.ofProgram(program);
-  runtime.addPlugin(ExpectPlugin());
-
-  runtime.executeLib('package:my_package/main.dart', 'main');
+  runtime.executeLib('package:example/main.dart', 'main');
 }
