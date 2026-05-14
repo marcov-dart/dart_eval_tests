@@ -1,5 +1,5 @@
 import 'package:dart_eval/dart_eval.dart';
-import 'package:test_eval/src/expect/eval_plugin.dart';
+import 'package:expect/eval_plugin.dart';
 
 void main(List<String> arguments) async {
   final compiler = Compiler();

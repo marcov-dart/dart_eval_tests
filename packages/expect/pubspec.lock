@@ -100,7 +100,7 @@ packages:
   dart_eval:
     dependency: "direct main"
     description:
-      path: "../dart_eval"
+      path: "../../../dart_eval"
       relative: true
     source: path
     version: "0.8.5"
@@ -121,7 +121,7 @@ packages:
     source: hosted
     version: "0.5.5"
   eval_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: eval_annotation
       sha256: "8a1f7bd1b6cf004a4b045ed8a24bc7faa8dd88e9deb8899689c0ab26ac6234a4"
@@ -136,13 +136,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.2"
-  expect:
-    dependency: "direct main"
-    description:
-      path: "packages/expect"
-      relative: true
-    source: path
-    version: "1.0.0"
   file:
     dependency: transitive
     description:

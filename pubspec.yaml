@@ -11,7 +11,8 @@ dependencies:
   dart_eval:
     path: ../dart_eval/
   path: ^1.9.0
-  eval_annotation: ^0.8.1
+  expect:
+    path: packages/expect
 
 dev_dependencies:
   lints: ^6.0.0
