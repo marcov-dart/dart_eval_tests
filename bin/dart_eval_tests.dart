@@ -13,8 +13,27 @@ void main(List<String> arguments) async {
 
   print('Found ${tests.length} tests,');
 
+  var okCount = 0;
+  var i = 1;
+
   for (final test in tests) {
-    print(test);
+    // Skipping some tests that cause the test run to end prematurely despite
+    // catching exceptions.
+    if (test.contains('language/regress') ||
+        test.contains('language/await/') ||
+        test.contains('language/extension_type/') ||
+        test ==
+            'language/nnbd/flow_analysis/write_promoted_value_in_loop_error_test.dart' ||
+        test == ' language/parameter/positional_type_test.dart' ||
+        test == 'language/parameter/positional_type_test.dart' ||
+        test == 'language/constructor/redirect_indirect_cycle_test.dart' ||
+        test == 'language/constructor/redirect_cycle_test.dart' ||
+        test == 'language/constructor/cyclic_constructor_test.dart') {
+      continue;
+    }
+
+    print('$i $test');
+    i++;
 
     try {
       final f = File(p.join(testPath, test));
@@ -27,10 +46,13 @@ void main(List<String> arguments) async {
       runtime.executeLib('package:example/main.dart', 'main');
 
       print(AnsiColor.green.colorize('OK'));
+      okCount++;
     } catch (e) {
       print(AnsiColor.red.colorize(e.toString()));
     }
   }
+
+  print('okCount: $okCount out of ${tests.length}');
 }
 
 Future<(String, List<String>)> listTests() async {
