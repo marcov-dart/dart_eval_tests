@@ -10,6 +10,8 @@ dependencies:
   path: ^1.9.0
   dart_eval:
     path: ../../../dart_eval/
+  smith:
+    path: ../smith/
   eval_annotation: ^0.8.1
 
 dev_dependencies:
